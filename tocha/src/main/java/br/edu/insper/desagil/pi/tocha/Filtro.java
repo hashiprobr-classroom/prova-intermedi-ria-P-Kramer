@@ -2,9 +2,57 @@ package br.edu.insper.desagil.pi.tocha;
 
 public class Filtro {
     private String tipo;
+    private double[][] kernelMedia;
+    private double[][] kernelSobelX;
+    private double[][] kernelSobelY;
+    private double[][] kernelLaplace;
 
     public Filtro(String tipo) {
         this.tipo = tipo;
+
+        this.kernelMedia = new double[3][3];
+        kernelMedia[0][0] = 0.111111;
+        kernelMedia[0][1] = 0.111111;
+        kernelMedia[0][2] = 0.111111;
+        kernelMedia[1][0] = 0.111111;
+        kernelMedia[1][1] = 0.111111;
+        kernelMedia[1][2] = 0.111111;
+        kernelMedia[2][0] = 0.111111;
+        kernelMedia[2][1] = 0.111111;
+        kernelMedia[2][2] = 0.111111;
+
+        this.kernelSobelX = new double[3][3];
+        kernelSobelX[0][0] = -1;
+        kernelSobelX[0][1] = 0;
+        kernelSobelX[0][2] = 1;
+        kernelSobelX[1][0] = -2;
+        kernelSobelX[1][1] = 0;
+        kernelSobelX[1][2] = 2;
+        kernelSobelX[2][0] = -1;
+        kernelSobelX[2][1] = 0;
+        kernelSobelX[2][2] = 1;
+
+        this.kernelSobelY = new double[3][3];
+        kernelSobelY[0][0] = -1;
+        kernelSobelY[0][1] = -2;
+        kernelSobelY[0][2] = -1;
+        kernelSobelY[1][0] = 0;
+        kernelSobelY[1][1] = 0;
+        kernelSobelY[1][2] = 0;
+        kernelSobelY[2][0] = 1;
+        kernelSobelY[2][1] = 2;
+        kernelSobelY[2][2] = 1;
+
+        this.kernelLaplace = new double[3][3];
+        kernelLaplace[0][0] = 0;
+        kernelLaplace[0][1] = -1;
+        kernelLaplace[0][2] = 0;
+        kernelLaplace[1][0] = -1;
+        kernelLaplace[1][1] = 4;
+        kernelLaplace[1][2] = -1;
+        kernelLaplace[2][0] = 0;
+        kernelLaplace[2][1] = -1;
+        kernelLaplace[2][2] = 0;
     }
 
     public Imagem processa(Imagem imagem) {
